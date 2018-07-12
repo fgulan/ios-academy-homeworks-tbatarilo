@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P6w-Kl-KWd">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,19 +15,19 @@
             <objects>
                 <viewController id="P6w-Kl-KWd" customClass="LoginViewController" customModule="TVShow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hOj-yT-xUi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter of taps" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIF-pS-MgP">
-                                <rect key="frame" x="88.333333333333329" y="388" width="198.66666666666669" height="36"/>
+                                <rect key="frame" x="61" y="222" width="198.5" height="36"/>
                                 <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.041960671800000002" blue="0.2348083175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3C-fp-rc8" colorLabel="IBBuiltInLabel-Orange">
-                                <rect key="frame" x="160" y="506" width="94" height="47"/>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3C-fp-rc8" colorLabel="IBBuiltInLabel-Orange">
+                                <rect key="frame" x="113" y="378" width="94" height="49"/>
                                 <color key="backgroundColor" white="0.83858064810434974" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="31"/>
                                 <size key="titleShadowOffset" width="5" height="0.0"/>
@@ -50,6 +50,7 @@
                             <constraint firstItem="DIF-pS-MgP" firstAttribute="centerX" secondItem="hOj-yT-xUi" secondAttribute="centerX" id="Qj3-nx-f5Y"/>
                             <constraint firstItem="DIF-pS-MgP" firstAttribute="centerY" secondItem="hOj-yT-xUi" secondAttribute="centerY" id="TRD-gR-CQt"/>
                             <constraint firstItem="p3C-fp-rc8" firstAttribute="centerX" secondItem="hOj-yT-xUi" secondAttribute="centerX" id="XMj-Qz-mea"/>
+                            <constraint firstItem="p3C-fp-rc8" firstAttribute="centerX" secondItem="hOj-yT-xUi" secondAttribute="centerX" id="gfv-tO-nNZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l2W-br-bkS"/>
                     </view>
