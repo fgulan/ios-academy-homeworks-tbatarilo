@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var IBOutlet: UILabel!
+
     
     // MARK: -Private-
     private var numberOfTaps:Int = 0
@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        IBOutlet.text = String("Tap on button")
 
         // Do any additional setup after loading the view.
     }
@@ -28,11 +27,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func buttonTapAction(_ sender: Any) {
-        numberOfTaps = numberOfTaps + 1
-        IBOutlet.text = String("Number of taps: ") + String(numberOfTaps)
-        //print("TAP")
-    }
+   
     
     
 
