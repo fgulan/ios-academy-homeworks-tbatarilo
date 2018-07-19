@@ -13,13 +13,43 @@ class LoginViewController: UIViewController {
 
     
     // MARK: -Private-
-    private var numberOfTaps:Int = 0
-
+    private var isChecked = false;
+    
+    
+    @IBOutlet weak var email: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
+    
+    @IBOutlet weak var rememberMe: UIButton!
+    
+    
+    @IBAction func changeState(_ sender: Any) {
+        isChecked = !isChecked
+        
+        if isChecked {
+            rememberMe.setImage(#imageLiteral(resourceName: "ic-checkbox-filled"), for: UIControlState())
+        } else {
+            rememberMe.setImage(#imageLiteral(resourceName: "ic-checkbox-empty"), for: UIControlState())
+        }
+    }
+    
+    private func underlined(textfield: UITextField){
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: textfield.frame.size.height - width, width:  textfield.frame.size.width, height: textfield.frame.size.height)
+        border.borderWidth = width
+        textfield.layer.addSublayer(border)
+        textfield.layer.masksToBounds = true
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        // Do any additional setup after loading the view.
+        underlined(textfield: email)
+        underlined(textfield: password)
     }
 
     override func didReceiveMemoryWarning() {
