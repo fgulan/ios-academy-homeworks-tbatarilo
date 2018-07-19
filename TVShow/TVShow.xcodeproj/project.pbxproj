@@ -13,6 +13,8 @@
 		5CAFEEED20EE6F4200E53EEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFEEEC20EE6F4200E53EEF /* AppDelegate.swift */; };
 		5CAFEEF420EE6F4300E53EEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CAFEEF320EE6F4300E53EEF /* Assets.xcassets */; };
 		5CAFEEF720EE6F4300E53EEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CAFEEF520EE6F4300E53EEF /* LaunchScreen.storyboard */; };
+		5CEF76562101217B006B0179 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEF76552101217B006B0179 /* HomeViewController.swift */; };
+		5CEF765821012197006B0179 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CEF765721012197006B0179 /* Home.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		5CAFEEF320EE6F4300E53EEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CAFEEF620EE6F4300E53EEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CAFEEF820EE6F4300E53EEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CEF76552101217B006B0179 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5CEF765721012197006B0179 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		B4A82CECD15A4F0AFDCA1666 /* Pods-TVShow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShow.release.xcconfig"; path = "Pods/Target Support Files/Pods-TVShow/Pods-TVShow.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +58,8 @@
 			children = (
 				5C52C06E20F42B9E00A589C9 /* Login.storyboard */,
 				5C1DC38520F5679E0010580C /* LoginViewController.swift */,
+				5CEF76552101217B006B0179 /* HomeViewController.swift */,
+				5CEF765721012197006B0179 /* Home.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -159,6 +165,7 @@
 				5CAFEEF720EE6F4300E53EEF /* LaunchScreen.storyboard in Resources */,
 				5CAFEEF420EE6F4300E53EEF /* Assets.xcassets in Resources */,
 				5C52C06F20F42B9E00A589C9 /* Login.storyboard in Resources */,
+				5CEF765821012197006B0179 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +217,7 @@
 			files = (
 				5C1DC38620F5679E0010580C /* LoginViewController.swift in Sources */,
 				5CAFEEED20EE6F4200E53EEF /* AppDelegate.swift in Sources */,
+				5CEF76562101217B006B0179 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

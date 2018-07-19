@@ -33,6 +33,28 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func LogInPushHome(_ sender: Any) {
+        pushToHome()
+    }
+    
+    @IBAction func createPushHome(_ sender: Any) {
+        pushToHome()
+    }
+    
+    func pushToHome() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+    
+        let homeViewController =
+            storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        // We need to push that view controller on top of the navigation stack
+        navigationController?.pushViewController(homeViewController, animated:
+            true)
+    }
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
