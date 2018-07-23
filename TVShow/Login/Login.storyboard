@@ -22,13 +22,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-je-hmw" userLabel="Text Fields View">
                                 <rect key="frame" x="0.0" y="275" width="375" height="120.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XZB-ys-ESl">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="XZB-ys-ESl">
                                         <rect key="frame" x="30" y="69.5" width="315" height="46"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRn-km-DZh">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="WRn-km-DZh">
                                         <rect key="frame" x="30" y="0.0" width="315" height="48.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -64,7 +64,7 @@
                                 <rect key="frame" x="0.0" y="395.5" width="375" height="60.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyp-Xt-3W2" userLabel="Enable">
-                                        <rect key="frame" x="30" y="18.5" width="24" height="24"/>
+                                        <rect key="frame" x="30" y="19" width="24" height="24"/>
                                         <state key="normal" image="ic-checkbox-empty"/>
                                         <connections>
                                             <action selector="changeState:" destination="P6w-Kl-KWd" eventType="touchUpInside" id="aAg-Oz-U80"/>
@@ -101,7 +101,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="LogInPushHome:" destination="P6w-Kl-KWd" eventType="touchUpInside" id="JGe-Ff-fN4"/>
+                                            <action selector="LogInPushHome:" destination="P6w-Kl-KWd" eventType="touchUpInside" id="Uxl-XI-XZA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghu-tL-hoU">
@@ -171,9 +171,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="r3T-eb-zmn" customClass="LoginView"/>
                     <connections>
-                        <outlet property="Email" destination="WRn-km-DZh" id="WDi-LF-CdJ"/>
-                        <outlet property="Password" destination="XZB-ys-ESl" id="I9y-Pe-yAr"/>
-                        <outlet property="rememberMe" destination="eyp-Xt-3W2" id="fkm-Re-ZgQ"/>
+                        <outlet property="emailField" destination="WRn-km-DZh" id="dG5-eY-Fhb"/>
+                        <outlet property="passwordField" destination="XZB-ys-ESl" id="zbH-ET-KfI"/>
+                        <outlet property="rememberMeButton" destination="eyp-Xt-3W2" id="FKn-TA-bnI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAp-qv-xs5" userLabel="First Responder" sceneMemberID="firstResponder"/>
