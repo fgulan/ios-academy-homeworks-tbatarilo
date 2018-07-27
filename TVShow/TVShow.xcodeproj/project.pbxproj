@@ -10,6 +10,8 @@
 		15A402EE236166B5ECF55407 /* Pods_TVShow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1091A047F5E95ECBF0C73979 /* Pods_TVShow.framework */; };
 		5C1DC38620F5679E0010580C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1DC38520F5679E0010580C /* LoginViewController.swift */; };
 		5C52C06F20F42B9E00A589C9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C52C06E20F42B9E00A589C9 /* Login.storyboard */; };
+		5CA325C72109E51300084F02 /* Shows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA325C62109E51300084F02 /* Shows.swift */; };
+		5CA325C92109ECD100084F02 /* ShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA325C82109ECD100084F02 /* ShowTableViewCell.swift */; };
 		5CAFEEED20EE6F4200E53EEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFEEEC20EE6F4200E53EEF /* AppDelegate.swift */; };
 		5CAFEEF420EE6F4300E53EEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CAFEEF320EE6F4300E53EEF /* Assets.xcassets */; };
 		5CAFEEF720EE6F4300E53EEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CAFEEF520EE6F4300E53EEF /* LaunchScreen.storyboard */; };
@@ -23,6 +25,8 @@
 		50EBD63C44FF31E55E0D4F66 /* Pods-TVShow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TVShow/Pods-TVShow.debug.xcconfig"; sourceTree = "<group>"; };
 		5C1DC38520F5679E0010580C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5C52C06E20F42B9E00A589C9 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		5CA325C62109E51300084F02 /* Shows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shows.swift; sourceTree = "<group>"; };
+		5CA325C82109ECD100084F02 /* ShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTableViewCell.swift; sourceTree = "<group>"; };
 		5CAFEEE920EE6F4200E53EEF /* TVShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CAFEEEC20EE6F4200E53EEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CAFEEF320EE6F4300E53EEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,16 +64,34 @@
 			children = (
 				5C52C06E20F42B9E00A589C9 /* Login.storyboard */,
 				5C1DC38520F5679E0010580C /* LoginViewController.swift */,
-				5CEF76552101217B006B0179 /* HomeViewController.swift */,
-				5CEF765721012197006B0179 /* Home.storyboard */,
-				5CEF765921013FF4006B0179 /* User.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		5CA325C42109E4D200084F02 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF765721012197006B0179 /* Home.storyboard */,
+				5CEF76552101217B006B0179 /* HomeViewController.swift */,
+				5CA325C82109ECD100084F02 /* ShowTableViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5CA325C52109E4E900084F02 /* CodableObjects */ = {
+			isa = PBXGroup;
+			children = (
+				5CEF765921013FF4006B0179 /* User.swift */,
+				5CA325C62109E51300084F02 /* Shows.swift */,
+			);
+			path = CodableObjects;
 			sourceTree = "<group>";
 		};
 		5CAFEEE020EE6F4200E53EEF = {
 			isa = PBXGroup;
 			children = (
+				5CA325C52109E4E900084F02 /* CodableObjects */,
+				5CA325C42109E4D200084F02 /* Home */,
 				5C52C06D20F42B4300A589C9 /* Login */,
 				5CAFEEEB20EE6F4200E53EEF /* TVShow */,
 				5CAFEEEA20EE6F4200E53EEF /* Products */,
@@ -222,6 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CA325C92109ECD100084F02 /* ShowTableViewCell.swift in Sources */,
+				5CA325C72109E51300084F02 /* Shows.swift in Sources */,
 				5CEF765A21013FF4006B0179 /* User.swift in Sources */,
 				5C1DC38620F5679E0010580C /* LoginViewController.swift in Sources */,
 				5CAFEEED20EE6F4200E53EEF /* AppDelegate.swift in Sources */,
