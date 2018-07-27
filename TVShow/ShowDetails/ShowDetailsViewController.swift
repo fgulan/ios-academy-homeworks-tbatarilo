@@ -30,6 +30,21 @@ class ShowDetailsViewController: UIViewController {
     
     private var episodes: [Episode] = []
     
+    @IBAction func addEpisodesButtonTap(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "NewEpisode", bundle: nil)
+        let newEpisodeViewController =
+            storyboard.instantiateViewController(withIdentifier: "NewEpisodeViewController") as! NewEpisodeViewController
+        
+        newEpisodeViewController.token = token
+        newEpisodeViewController.showId = showId
+        
+        newEpisodeViewController.delegate = self
+        
+        let navigationController = UINavigationController.init(rootViewController:
+            newEpisodeViewController)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getShowInfo()
@@ -132,6 +147,14 @@ extension ShowDetailsViewController: UITableViewDataSource {
         cell.configureWith(episode: episode)
 
         return cell
+    }
+}
+
+extension ShowDetailsViewController: Reloading {
+    func shouldReload(episode: Episode) {
+        episodes.append(episode)
+        numberOfEpisodes.text = "Episodes " + String(episodes.count)
+        tableView.reloadData()
     }
 }
 
