@@ -25,6 +25,5 @@ struct Episode: Codable {
         case imageUrl
         case episodeNumber
         case season
-        
     }
 }

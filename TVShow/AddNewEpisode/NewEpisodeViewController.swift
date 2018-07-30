@@ -15,34 +15,36 @@ protocol Reloading {
 }
 
 class NewEpisodeViewController: UIViewController {
+
+    @IBOutlet weak var episodeTitleTextField: UITextField!
+    @IBOutlet weak var seasonNumberTextField: UITextField!
+    @IBOutlet weak var episodeNumberTextField: UITextField!
+    @IBOutlet weak var episodeDescriptionTextField: UITextField!
     
     var showId: String?
     var token: String?
     var delegate: Reloading?
     
-    
-    @IBOutlet weak var episodeTitleTextField: UITextField!
-    
-    @IBOutlet weak var seasonNumberTextField: UITextField!
-    
-    @IBOutlet weak var episodeNumberTextField: UITextField!
-    
-    @IBOutlet weak var episodeDescriptionTextField: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        defineCancelButton()
+        navigationItem.title = "Add episode"
+        defineAddButton()
+    }
+    
+    private func defineCancelButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel",
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(didSelectCancel))
-        
-        navigationItem.title = "Add episode"
-        
+    }
+    
+    private func defineAddButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add",
                                                             style: .plain,
                                                             target: self,
-                                                            action: #selector(didSelectAddShow))
+                                                            action:    #selector(didSelectAddShow))
     }
     
     @objc func didSelectAddShow() {
@@ -67,8 +69,7 @@ class NewEpisodeViewController: UIViewController {
                      headers : headers
             )
             .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:
-                DataResponse<Episode>) in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:DataResponse<Episode>) in
                 
                 SVProgressHUD.dismiss()
                 
@@ -76,12 +77,10 @@ class NewEpisodeViewController: UIViewController {
                 case .success(let episode):
                     self?.delegate?.shouldReload(episode: episode)
                     self?.dismiss(animated: true)
-                case .failure(let error):
-                    print(error)
+                case .failure:
                     self?.showAlert(alertMessage: "Adding episode failed")
                 }
         }
-        
     }
     
     private func showAlert(alertMessage: String) {
@@ -95,6 +94,5 @@ class NewEpisodeViewController: UIViewController {
     @objc func didSelectCancel() {
         self.dismiss(animated: false)
     }
-    
     
 }

@@ -11,10 +11,7 @@ import UIKit
 class ShowDetailsViewCell: UITableViewCell {
 
     @IBOutlet weak var episodePropertyLabel: UILabel!
-    
-    
     @IBOutlet weak var episodeNameLabel: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +20,6 @@ class ShowDetailsViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configureWith(episode: Episode){

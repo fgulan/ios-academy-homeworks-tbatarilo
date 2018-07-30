@@ -17,7 +17,6 @@ struct ShowDetails: Codable {
     let imageUrl: String
     
     
-    
     enum CodingKeys: String, CodingKey {
         case type
         case title

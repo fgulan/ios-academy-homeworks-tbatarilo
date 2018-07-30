@@ -48,6 +48,10 @@ class LoginViewController: UIViewController {
         registerUser(email: emailField.text!, password: passwordField.text!)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     func areEmpty(email: String, password: String) -> Bool {
         return email.isEmpty || password.isEmpty
     }
@@ -75,36 +79,17 @@ class LoginViewController: UIViewController {
                      parameters: parameters,
                      encoding: JSONEncoding.default)
             .validate()
-            .responseJSON{ [weak self]
-                response in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self](dataResponse: DataResponse<LoginData>) in
+                
                 SVProgressHUD.dismiss()
                 
-                switch response.result {
-                case .success(let response):
-                    guard let jsonDict = response as? Dictionary<String, Any> else {
-                        return
-                    }
-                    
-                    guard
-                        let dataDict = jsonDict["data"],
-                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
-                            return
-                    }
-                    
-                    do {
-                        let loginUser: LoginData = try JSONDecoder().decode(LoginData.self, from: dataBinary)
-                        self?.loginUser = loginUser
-                        self?.pushToHome()
-                    } catch let error {
-                        print("Serialization error: \(error)")
-                    }
-                    
+                switch dataResponse.result {
+                case .success(let loginUser):
+                    self?.loginUser = loginUser
+                    self?.pushToHome()
                 case .failure(let error):
-                    let alert = UIAlertController(title: "Error!", message: "Something went wrong, check your email and password and try again", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
-                    
-                    print("LOGIN API failure: \(error)")
+                    print("API failure: \(error)")
+                    self?.showAlert(alertMessage: "Something went wrong, check your email and password and try again")
                 }
         }
     }
@@ -123,39 +108,27 @@ class LoginViewController: UIViewController {
                      parameters: parameters,
                      encoding: JSONEncoding.default)
             .validate()
-            .responseJSON { [weak self] response in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](dataResponse: DataResponse<User>) in
                 
                 SVProgressHUD.dismiss()
                 
-                switch response.result {
-                case .success(let response):
-                    
-                    guard let jsonDict = response as? Dictionary<String, Any> else {
-                        return
-                    }
-                    
-                    guard
-                        let dataDict = jsonDict["data"],
-                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
-                            return
-                    }
-                    
-                    do {
-                        let user: User = try JSONDecoder().decode(User.self, from: dataBinary)
-                        self?.user = user
-                        self?.loginUser(email: email, password: password)
-                    } catch let error {
-                        print("Serialization error: \(error)")
-                        SVProgressHUD.showError(withStatus: "Error occured during registration.")
-                    }
-                case .failure:
-                    SVProgressHUD.showError(withStatus: "Error occured during registration.")
+                switch dataResponse.result {
+                case .success(let user):
+                    self?.user = user
+                    self?.loginUser(email: email, password: password)
+                case .failure(let error):
+                    print("API failure: \(error)")
+                    self?.showAlert(alertMessage: "Error occured during registration")
                 }
             }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func showAlert(alertMessage: String) {
+        let alertController = UIAlertController(title: "Alert", message:
+            alertMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
-
+    
 }

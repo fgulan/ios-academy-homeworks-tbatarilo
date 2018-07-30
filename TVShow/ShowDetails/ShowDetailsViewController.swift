@@ -13,11 +13,8 @@ import Alamofire
 class ShowDetailsViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var numberOfEpisodes: UILabel!
-    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self 
@@ -28,6 +25,7 @@ class ShowDetailsViewController: UIViewController {
     var token: String?
     var showId: String?
     
+    //MARK: -Private-
     private var episodes: [Episode] = []
     
     @IBAction func addEpisodesButtonTap(_ sender: Any) {
@@ -69,8 +67,7 @@ class ShowDetailsViewController: UIViewController {
                 encoding: JSONEncoding.default,
                 headers: headers)
             .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:
-                DataResponse<ShowDetails>) in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:DataResponse<ShowDetails>) in
                 
                 SVProgressHUD.dismiss()
                 
@@ -78,16 +75,15 @@ class ShowDetailsViewController: UIViewController {
                 case .success(let showDetails):
                     self?.titleLabel.text = showDetails.title
                     self?.descriptionLabel.text = showDetails.description
-                case .failure:
-                    print("Fail")
+                case .failure(let error):
+                    print(error)
                 }
                 
         }
     }
     
     private func getEpisodes() {
-        let token: String = self.token!
-        let headers = ["Authorization": token]
+        let headers = ["Authorization": token!]
         
         SVProgressHUD.show()
         
@@ -99,8 +95,7 @@ class ShowDetailsViewController: UIViewController {
                 headers: headers
             )
             .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:
-                DataResponse<[Episode]>) in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:DataResponse<[Episode]>) in
                 
                 SVProgressHUD.dismiss()
                 
@@ -109,9 +104,6 @@ class ShowDetailsViewController: UIViewController {
                     self?.episodes = episodes
                     self?.tableView.reloadData()
                     self?.setNumberOfEpisodes()
-                    for episode in episodes {
-                        print(episode.title)
-                    }
                 case .failure(let error):
                     print(error)
                 }
@@ -153,7 +145,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
 extension ShowDetailsViewController: Reloading {
     func shouldReload(episode: Episode) {
         episodes.append(episode)
-        numberOfEpisodes.text = "Episodes " + String(episodes.count)
+        setNumberOfEpisodes()
         tableView.reloadData()
     }
 }
