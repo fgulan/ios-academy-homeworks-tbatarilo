@@ -62,7 +62,19 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let show = listOfShows[indexPath.row]
+        
+        let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
+        let detailsViewController = storyboard.instantiateViewController(
+            withIdentifier: "ShowDetailsViewController"
+            ) as! ShowDetailsViewController
+        
+        detailsViewController.token = loginUser?.token
+        detailsViewController.showId = show.id
+        
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
