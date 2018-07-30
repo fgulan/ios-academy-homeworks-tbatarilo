@@ -26,12 +26,25 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-logo" translatesAutoresizingMaskIntoConstraints="NO" id="w4D-xy-t1c">
                                         <rect key="frame" x="113" y="41.5" width="150" height="83"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGh-hd-9sa">
+                                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FnG-ev-pl0"/>
+                                            <constraint firstAttribute="width" constant="40" id="gEX-ln-6aL"/>
+                                        </constraints>
+                                        <state key="normal" image="ic-navigate-back"/>
+                                        <connections>
+                                            <action selector="backButtonTap:" destination="jZI-p5-Fwb" eventType="touchUpInside" id="Ycv-sl-nhI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="PGh-hd-9sa" firstAttribute="top" secondItem="Rdp-hE-iEn" secondAttribute="top" constant="10" id="7x2-FD-T2s"/>
                                     <constraint firstItem="w4D-xy-t1c" firstAttribute="centerY" secondItem="Rdp-hE-iEn" secondAttribute="centerY" id="Lpy-VF-EmV"/>
                                     <constraint firstItem="w4D-xy-t1c" firstAttribute="width" secondItem="Rdp-hE-iEn" secondAttribute="width" multiplier="0.4" id="V0g-nn-4ny"/>
                                     <constraint firstItem="w4D-xy-t1c" firstAttribute="centerX" secondItem="Rdp-hE-iEn" secondAttribute="centerX" id="a78-ia-AEF"/>
+                                    <constraint firstItem="PGh-hd-9sa" firstAttribute="leading" secondItem="Rdp-hE-iEn" secondAttribute="leading" constant="10" id="kU9-zi-3j8"/>
                                     <constraint firstItem="w4D-xy-t1c" firstAttribute="height" secondItem="Rdp-hE-iEn" secondAttribute="height" multiplier="0.5" id="mbm-ED-M2X"/>
                                 </constraints>
                             </view>
@@ -185,6 +198,7 @@
     </scenes>
     <resources>
         <image name="ic-fab-button" width="68" height="74"/>
+        <image name="ic-navigate-back" width="32" height="32"/>
         <image name="ic-navigation-chevron-right-medium" width="24" height="24"/>
         <image name="splash-logo" width="129" height="148"/>
     </resources>

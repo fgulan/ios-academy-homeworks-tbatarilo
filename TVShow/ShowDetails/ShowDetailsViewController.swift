@@ -28,6 +28,10 @@ class ShowDetailsViewController: UIViewController {
     //MARK: -Private-
     private var episodes: [Episode] = []
     
+    @IBAction func backButtonTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func addEpisodesButtonTap(_ sender: Any) {
         let storyboard = UIStoryboard(name: "NewEpisode", bundle: nil)
         let newEpisodeViewController =
@@ -48,6 +52,13 @@ class ShowDetailsViewController: UIViewController {
         getShowInfo()
         getEpisodes()
         setNumberOfEpisodes()
+        hideNavigationBar()
+    }
+    
+    //MARK: -Private functions-
+    
+    private func hideNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func setNumberOfEpisodes() {
