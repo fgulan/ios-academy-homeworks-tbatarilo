@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Alamofire
+import Kingfisher
 
 protocol Reloading {
     func shouldReload(episode: Episode)
