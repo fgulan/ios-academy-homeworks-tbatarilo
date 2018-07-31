@@ -15,6 +15,7 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var numberOfEpisodes: UILabel!
+    @IBOutlet weak var showImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self 
@@ -30,6 +31,13 @@ class ShowDetailsViewController: UIViewController {
     
     @IBAction func backButtonTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        let homeViewController = storyboard.instantiateViewController(
+//            withIdentifier: "HomeViewController"
+//            ) as! HomeViewController
+//
+//        navigationController?.setViewControllers([homeViewController],
+//                                                 animated: true)
     }
     
     @IBAction func addEpisodesButtonTap(_ sender: Any) {
@@ -56,6 +64,11 @@ class ShowDetailsViewController: UIViewController {
     }
     
     //MARK: -Private functions-
+    
+    private func setImage(imageURL: String) {
+        let url = URL(string: "https://api.infinum.academy" + imageURL)
+        showImageView.kf.setImage(with: url)
+    }
     
     private func hideNavigationBar() {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -86,6 +99,7 @@ class ShowDetailsViewController: UIViewController {
                 case .success(let showDetails):
                     self?.titleLabel.text = showDetails.title
                     self?.descriptionLabel.text = showDetails.description
+                    self?.setImage(imageURL: showDetails.imageUrl)
                 case .failure(let error):
                     print(error)
                 }

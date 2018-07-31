@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ShowTableViewCell: UITableViewCell {
     
@@ -27,6 +28,9 @@ class ShowTableViewCell: UITableViewCell {
     
     func configureWith(show: Show){
         showNameLabel.text = show.title
+        
+        let url = URL(string: "https://api.infinum.academy" + show.imageUrl)
+        showImageView.kf.setImage(with: url)
     }
 
 }
