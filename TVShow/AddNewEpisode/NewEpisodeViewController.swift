@@ -84,16 +84,16 @@ class NewEpisodeViewController: UIViewController {
         }
     }
     
+    @objc func didSelectCancel() {
+        self.dismiss(animated: false)
+    }
+    
     private func showAlert(alertMessage: String) {
         let alertController = UIAlertController(title: "Alert", message:
             alertMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,handler: nil))
         
         present(alertController, animated: true, completion: nil)
-    }
-    
-    @objc func didSelectCancel() {
-        self.dismiss(animated: false)
     }
     
 }

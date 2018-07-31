@@ -14,6 +14,8 @@ import CodableAlamofire
 class LoginViewController: UIViewController {
     
     
+    @IBOutlet weak var createAccButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var rememberMeButton: UIButton!
@@ -35,6 +37,8 @@ class LoginViewController: UIViewController {
     @IBAction func LogInPushHome(_ sender: Any) {
         if areEmpty(email: emailField.text!, password: passwordField.text!) {
             SVProgressHUD.showError(withStatus: "Enter both parameters.")
+            shakeIfEmpty(textField: emailField)
+            shakeIfEmpty(textField: passwordField)
             return
         }
         loginUser(email: emailField.text!, password: passwordField.text!, saveCredentials: saveCredentials)
@@ -43,6 +47,8 @@ class LoginViewController: UIViewController {
     @IBAction func createPushHome(_ sender: Any) {
         if areEmpty(email: emailField.text!, password: passwordField.text!) {
             SVProgressHUD.showError(withStatus: "Enter both parameters.")
+            shakeIfEmpty(textField: emailField)
+            shakeIfEmpty(textField: passwordField)
             return
         }
         registerUser(email: emailField.text!, password: passwordField.text!)
@@ -61,11 +67,11 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func areEmpty(email: String, password: String) -> Bool {
+    private func areEmpty(email: String, password: String) -> Bool {
         return email.isEmpty || password.isEmpty
     }
     
-    func pushToHome() {
+    private func pushToHome() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController =
             storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
@@ -74,7 +80,7 @@ class LoginViewController: UIViewController {
             true)
     }
     
-    func loginUser(email: String, password: String, saveCredentials: Bool) {
+    private func loginUser(email: String, password: String, saveCredentials: Bool) {
         SVProgressHUD.show()
         
         if (saveCredentials) {
@@ -109,7 +115,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func registerUser(email: String, password: String) {
+    private func registerUser(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -144,6 +150,21 @@ class LoginViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,handler: nil))
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func shakeIfEmpty(textField: UITextField){
+        
+        if !(textField.text?.isEmpty)! { return }
+        
+        let animation = CABasicAnimation(keyPath: "position")
+        
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = CGPoint(x: textField.center.x - 4.0, y: textField.center.y)
+        animation.toValue = CGPoint(x: textField.center.x + 4.0, y: textField.center.y)
+        
+        textField.layer.add(animation, forKey: "position")
     }
     
 }

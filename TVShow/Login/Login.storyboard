@@ -195,7 +195,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="r3T-eb-zmn" customClass="LoginView"/>
                     <connections>
+                        <outlet property="createAccButton" destination="ghu-tL-hoU" id="FPq-ph-tcg"/>
                         <outlet property="emailField" destination="WRn-km-DZh" id="dG5-eY-Fhb"/>
+                        <outlet property="loginButton" destination="a0c-M4-BDg" id="0jz-iC-QeI"/>
                         <outlet property="passwordField" destination="XZB-ys-ESl" id="zbH-ET-KfI"/>
                         <outlet property="rememberMeButton" destination="eyp-Xt-3W2" id="FKn-TA-bnI"/>
                     </connections>
