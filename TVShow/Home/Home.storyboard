@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,22 +32,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7s-15-aaX">
-                                                    <rect key="frame" x="15" y="11" width="345" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7s-15-aaX">
+                                                    <rect key="frame" x="117.5" y="11" width="242.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Erz-kK-ETe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="112.5" height="43.5"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="L7s-15-aaX" firstAttribute="bottom" secondItem="bZg-UO-2ZN" secondAttribute="bottomMargin" id="6yq-GJ-zNk"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="L7s-15-aaX" secondAttribute="trailing" id="L6t-o8-swx"/>
-                                                <constraint firstItem="L7s-15-aaX" firstAttribute="top" secondItem="bZg-UO-2ZN" secondAttribute="topMargin" id="abk-xQ-w8i"/>
-                                                <constraint firstItem="L7s-15-aaX" firstAttribute="leading" secondItem="bZg-UO-2ZN" secondAttribute="leadingMargin" id="tta-DB-KzC"/>
+                                                <constraint firstItem="L7s-15-aaX" firstAttribute="top" secondItem="bZg-UO-2ZN" secondAttribute="topMargin" id="6ht-MO-idg"/>
+                                                <constraint firstAttribute="bottom" secondItem="Erz-kK-ETe" secondAttribute="bottom" id="CM3-Ap-7te"/>
+                                                <constraint firstItem="L7s-15-aaX" firstAttribute="leading" secondItem="Erz-kK-ETe" secondAttribute="trailing" constant="5" id="IeQ-b3-yXg"/>
+                                                <constraint firstItem="Erz-kK-ETe" firstAttribute="leading" secondItem="bZg-UO-2ZN" secondAttribute="leading" id="OQq-Ef-Qbg"/>
+                                                <constraint firstItem="L7s-15-aaX" firstAttribute="trailing" secondItem="bZg-UO-2ZN" secondAttribute="trailingMargin" id="Qyi-kB-KbC"/>
+                                                <constraint firstItem="L7s-15-aaX" firstAttribute="bottom" secondItem="bZg-UO-2ZN" secondAttribute="bottomMargin" id="bG0-Yp-nCW"/>
+                                                <constraint firstItem="Erz-kK-ETe" firstAttribute="width" secondItem="bZg-UO-2ZN" secondAttribute="width" multiplier="0.3" id="p5g-d0-rXF"/>
+                                                <constraint firstItem="Erz-kK-ETe" firstAttribute="top" secondItem="bZg-UO-2ZN" secondAttribute="top" id="ulO-JJ-C8M"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="showName" destination="L7s-15-aaX" id="ZyC-li-A1H"/>
+                                            <outlet property="showImageView" destination="Erz-kK-ETe" id="6v1-Ba-V99"/>
+                                            <outlet property="showNameLabel" destination="L7s-15-aaX" id="bQh-66-uMi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

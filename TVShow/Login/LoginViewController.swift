@@ -19,13 +19,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var rememberMeButton: UIButton!
     
     // MARK: -Private-
-    private var isChecked = false;
+    private var saveCredentials = false;
     private var user: User?
     private var loginUser: LoginData?
     
     @IBAction func changeState(_ sender: Any) {
-        isChecked = !isChecked
-        if isChecked {
+        saveCredentials = !saveCredentials
+        if saveCredentials {
             rememberMeButton.setImage(#imageLiteral(resourceName: "ic-checkbox-filled"), for: UIControlState())
         } else {
             rememberMeButton.setImage(#imageLiteral(resourceName: "ic-checkbox-empty"), for: UIControlState())
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
             SVProgressHUD.showError(withStatus: "Enter both parameters.")
             return
         }
-        loginUser(email: emailField.text!, password: passwordField.text!)
+        loginUser(email: emailField.text!, password: passwordField.text!, saveCredentials: saveCredentials)
     }
     
     @IBAction func createPushHome(_ sender: Any) {
@@ -50,6 +50,15 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let email = UserDefaults.standard.value(forKey: "email") as? String,
+            let password = UserDefaults.standard.value(forKey: "password") as? String {
+            loginUser(email: email, password: password, saveCredentials: true)
+        }
     }
     
     func areEmpty(email: String, password: String) -> Bool {
@@ -65,8 +74,13 @@ class LoginViewController: UIViewController {
             true)
     }
     
-    func loginUser(email: String, password: String) {
+    func loginUser(email: String, password: String, saveCredentials: Bool) {
         SVProgressHUD.show()
+        
+        if (saveCredentials) {
+            UserDefaults.standard.setValue(email, forKey: "email")
+            UserDefaults.standard.setValue(password, forKey: "password")
+        }
         
         let parameters: [String: String] = [
             "email": email,
@@ -85,6 +99,7 @@ class LoginViewController: UIViewController {
                 
                 switch dataResponse.result {
                 case .success(let loginUser):
+                    
                     self?.loginUser = loginUser
                     self?.pushToHome()
                 case .failure(let error):
@@ -115,7 +130,7 @@ class LoginViewController: UIViewController {
                 switch dataResponse.result {
                 case .success(let user):
                     self?.user = user
-                    self?.loginUser(email: email, password: password)
+                    self?.loginUser(email: email, password: password, saveCredentials: false)
                 case .failure(let error):
                     print("API failure: \(error)")
                     self?.showAlert(alertMessage: "Error occured during registration")

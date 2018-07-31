@@ -10,8 +10,10 @@ import UIKit
 
 class ShowTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var showName: UILabel!
+    @IBOutlet weak var showNameLabel: UILabel!
 
+    @IBOutlet weak var showImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +26,7 @@ class ShowTableViewCell: UITableViewCell {
     }
     
     func configureWith(show: Show){
-        showName.text = show.title
+        showNameLabel.text = show.title
     }
 
 }

@@ -31,8 +31,18 @@ class HomeViewController: UIViewController {
         navigationItem.title = "Shows"
         
         getShows()
+        setLogoutButton()
     }
 
+    private func setLogoutButton() {
+        let logoutItem = UIBarButtonItem.init(
+            image: UIImage(named: "ic-logout"),
+                style: .plain,
+                target: self,
+                action:
+            #selector(_logoutActionHandler))
+        navigationItem.leftBarButtonItem = logoutItem
+    }
     
     private func getShows(){
         let headers = ["Authorization": loginUser!.token]
@@ -57,6 +67,19 @@ class HomeViewController: UIViewController {
                     print("API failure: \(error)")
                 }
         }
+    }
+    
+    @objc private func _logoutActionHandler() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(
+            withIdentifier: "LoginViewController"
+            ) as! LoginViewController
+        
+        navigationController?.setViewControllers([loginViewController],
+                                                 animated: true)
+        
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "password")
     }
 
 }
