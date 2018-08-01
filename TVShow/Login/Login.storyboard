@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gHA-td-chc">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,35 +14,35 @@
         <!--Login View Controller-->
         <scene sceneID="yTa-Gc-knq">
             <objects>
-                <viewController id="P6w-Kl-KWd" customClass="LoginViewController" customModule="TVShow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P6w-Kl-KWd" customClass="LoginViewController" customModule="TVShow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hOj-yT-xUi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofq-je-hmw" userLabel="Text Fields View">
-                                <rect key="frame" x="0.0" y="329.66666666666669" width="375" height="138"/>
+                                <rect key="frame" x="0.0" y="275" width="375" height="120.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="XZB-ys-ESl">
-                                        <rect key="frame" x="30" y="80.666666666666629" width="315" height="53"/>
+                                        <rect key="frame" x="30" y="69" width="315" height="46.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cv-nf-ojQ" userLabel="PasswordUnderline">
-                                        <rect key="frame" x="5" y="132.66666666666663" width="365" height="1"/>
+                                        <rect key="frame" x="5" y="114.5" width="365" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="BEQ-58-RfV"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="WRn-km-DZh">
-                                        <rect key="frame" x="30" y="0.66666666666662877" width="315" height="55"/>
+                                        <rect key="frame" x="30" y="0.5" width="315" height="48.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yf-7g-wa2" userLabel="EMailUnderline">
-                                        <rect key="frame" x="5" y="55.666666666666629" width="365" height="1"/>
+                                        <rect key="frame" x="5" y="49" width="365" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Jsn-y6-On4"/>
@@ -68,10 +68,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ihg-au-AWZ" userLabel="LoginLogo View">
-                                <rect key="frame" x="0.0" y="87.999999999999986" width="375" height="241.66666666666663"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="211"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="l1w-z4-eMR">
-                                        <rect key="frame" x="150.66666666666666" y="80.666666666666657" width="75" height="80"/>
+                                        <rect key="frame" x="150.5" y="65.5" width="75" height="80"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -81,10 +81,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-EQ-f6z" userLabel="Remember Me View">
-                                <rect key="frame" x="0.0" y="467.66666666666669" width="375" height="69.000000000000057"/>
+                                <rect key="frame" x="0.0" y="395.5" width="375" height="60.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyp-Xt-3W2" userLabel="Enable">
-                                        <rect key="frame" x="20" y="15.333333333333314" width="40" height="40"/>
+                                        <rect key="frame" x="20" y="11" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="NX2-IA-cC6"/>
                                             <constraint firstAttribute="width" constant="40" id="T8o-mP-Pa1"/>
@@ -95,7 +95,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ny-at-4hk">
-                                        <rect key="frame" x="70" y="23.333333333333314" width="126.66666666666669" height="24"/>
+                                        <rect key="frame" x="70" y="19" width="126.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -110,10 +110,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azf-ri-zcc" userLabel="Login View">
-                                <rect key="frame" x="0.0" y="536.66666666666663" width="375" height="241.33333333333337"/>
+                                <rect key="frame" x="0.0" y="456" width="375" height="211"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0c-M4-BDg">
-                                        <rect key="frame" x="30" y="0.66666666666674246" width="315" height="47.666666666666664"/>
+                                        <rect key="frame" x="30" y="0.5" width="315" height="41.5"/>
                                         <color key="backgroundColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="LOG IN">
@@ -129,7 +129,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghu-tL-hoU">
-                                        <rect key="frame" x="124.66666666666669" y="106.33333333333337" width="126" height="30"/>
+                                        <rect key="frame" x="124.5" y="91" width="126" height="30"/>
                                         <state key="normal" title="Create an account">
                                             <color key="titleColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -138,10 +138,10 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70o-bd-FDv" userLabel="orLabel View">
-                                        <rect key="frame" x="0.0" y="48.333333333333371" width="375" height="58"/>
+                                        <rect key="frame" x="0.0" y="42" width="375" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMb-f6-S92">
-                                                <rect key="frame" x="179.66666666666666" y="18.666666666666629" width="16" height="20.333333333333329"/>
+                                                <rect key="frame" x="179.5" y="14.5" width="16" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -195,7 +195,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="r3T-eb-zmn" customClass="LoginView"/>
                     <connections>
+                        <outlet property="createAccButton" destination="ghu-tL-hoU" id="FPq-ph-tcg"/>
                         <outlet property="emailField" destination="WRn-km-DZh" id="dG5-eY-Fhb"/>
+                        <outlet property="loginButton" destination="a0c-M4-BDg" id="0jz-iC-QeI"/>
                         <outlet property="passwordField" destination="XZB-ys-ESl" id="zbH-ET-KfI"/>
                         <outlet property="rememberMeButton" destination="eyp-Xt-3W2" id="FKn-TA-bnI"/>
                     </connections>
@@ -210,7 +212,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gHA-td-chc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ygi-nf-XTN">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -14,18 +14,20 @@ import CodableAlamofire
 class LoginViewController: UIViewController {
     
     
+    @IBOutlet weak var createAccButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var rememberMeButton: UIButton!
     
     // MARK: -Private-
-    private var isChecked = false;
+    private var saveCredentials = false;
     private var user: User?
     private var loginUser: LoginData?
     
     @IBAction func changeState(_ sender: Any) {
-        isChecked = !isChecked
-        if isChecked {
+        saveCredentials = !saveCredentials
+        if saveCredentials {
             rememberMeButton.setImage(#imageLiteral(resourceName: "ic-checkbox-filled"), for: UIControlState())
         } else {
             rememberMeButton.setImage(#imageLiteral(resourceName: "ic-checkbox-empty"), for: UIControlState())
@@ -35,24 +37,41 @@ class LoginViewController: UIViewController {
     @IBAction func LogInPushHome(_ sender: Any) {
         if areEmpty(email: emailField.text!, password: passwordField.text!) {
             SVProgressHUD.showError(withStatus: "Enter both parameters.")
+            shakeIfEmpty(textField: emailField)
+            shakeIfEmpty(textField: passwordField)
             return
         }
-        loginUser(email: emailField.text!, password: passwordField.text!)
+        loginUser(email: emailField.text!, password: passwordField.text!, saveCredentials: saveCredentials)
     }
     
     @IBAction func createPushHome(_ sender: Any) {
         if areEmpty(email: emailField.text!, password: passwordField.text!) {
             SVProgressHUD.showError(withStatus: "Enter both parameters.")
+            shakeIfEmpty(textField: emailField)
+            shakeIfEmpty(textField: passwordField)
             return
         }
         registerUser(email: emailField.text!, password: passwordField.text!)
     }
     
-    func areEmpty(email: String, password: String) -> Bool {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let email = UserDefaults.standard.value(forKey: "email") as? String,
+            let password = UserDefaults.standard.value(forKey: "password") as? String {
+            loginUser(email: email, password: password, saveCredentials: true)
+        }
+    }
+    
+    private func areEmpty(email: String, password: String) -> Bool {
         return email.isEmpty || password.isEmpty
     }
     
-    func pushToHome() {
+    private func pushToHome() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController =
             storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
@@ -61,8 +80,13 @@ class LoginViewController: UIViewController {
             true)
     }
     
-    func loginUser(email: String, password: String) {
+    private func loginUser(email: String, password: String, saveCredentials: Bool) {
         SVProgressHUD.show()
+        
+        if (saveCredentials) {
+            UserDefaults.standard.setValue(email, forKey: "email")
+            UserDefaults.standard.setValue(password, forKey: "password")
+        }
         
         let parameters: [String: String] = [
             "email": email,
@@ -75,41 +99,23 @@ class LoginViewController: UIViewController {
                      parameters: parameters,
                      encoding: JSONEncoding.default)
             .validate()
-            .responseJSON{ [weak self]
-                response in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self](dataResponse: DataResponse<LoginData>) in
+                
                 SVProgressHUD.dismiss()
                 
-                switch response.result {
-                case .success(let response):
-                    guard let jsonDict = response as? Dictionary<String, Any> else {
-                        return
-                    }
+                switch dataResponse.result {
+                case .success(let loginUser):
                     
-                    guard
-                        let dataDict = jsonDict["data"],
-                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
-                            return
-                    }
-                    
-                    do {
-                        let loginUser: LoginData = try JSONDecoder().decode(LoginData.self, from: dataBinary)
-                        self?.loginUser = loginUser
-                        self?.pushToHome()
-                    } catch let error {
-                        print("Serialization error: \(error)")
-                    }
-                    
+                    self?.loginUser = loginUser
+                    self?.pushToHome()
                 case .failure(let error):
-                    let alert = UIAlertController(title: "Error!", message: "Something went wrong, check your email and password and try again", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
-                    
-                    print("LOGIN API failure: \(error)")
+                    print("API failure: \(error)")
+                    self?.showAlert(alertMessage: "Something went wrong, check your email and password and try again")
                 }
         }
     }
     
-    func registerUser(email: String, password: String) {
+    private func registerUser(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -123,39 +129,42 @@ class LoginViewController: UIViewController {
                      parameters: parameters,
                      encoding: JSONEncoding.default)
             .validate()
-            .responseJSON { [weak self] response in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](dataResponse: DataResponse<User>) in
                 
                 SVProgressHUD.dismiss()
                 
-                switch response.result {
-                case .success(let response):
-                    
-                    guard let jsonDict = response as? Dictionary<String, Any> else {
-                        return
-                    }
-                    
-                    guard
-                        let dataDict = jsonDict["data"],
-                        let dataBinary = try? JSONSerialization.data(withJSONObject: dataDict) else {
-                            return
-                    }
-                    
-                    do {
-                        let user: User = try JSONDecoder().decode(User.self, from: dataBinary)
-                        self?.user = user
-                        self?.loginUser(email: email, password: password)
-                    } catch let error {
-                        print("Serialization error: \(error)")
-                        SVProgressHUD.showError(withStatus: "Error occured during registration.")
-                    }
-                case .failure:
-                    SVProgressHUD.showError(withStatus: "Error occured during registration.")
+                switch dataResponse.result {
+                case .success(let user):
+                    self?.user = user
+                    self?.loginUser(email: email, password: password, saveCredentials: false)
+                case .failure(let error):
+                    print("API failure: \(error)")
+                    self?.showAlert(alertMessage: "Error occured during registration")
                 }
             }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func showAlert(alertMessage: String) {
+        let alertController = UIAlertController(title: "Alert", message:
+            alertMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default,handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
-
+    
+    private func shakeIfEmpty(textField: UITextField){
+        
+        if !(textField.text?.isEmpty)! { return }
+        
+        let animation = CABasicAnimation(keyPath: "position")
+        
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = CGPoint(x: textField.center.x - 4.0, y: textField.center.y)
+        animation.toValue = CGPoint(x: textField.center.x + 4.0, y: textField.center.y)
+        
+        textField.layer.add(animation, forKey: "position")
+    }
+    
 }
