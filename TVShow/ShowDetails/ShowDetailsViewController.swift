@@ -31,13 +31,6 @@ class ShowDetailsViewController: UIViewController {
     
     @IBAction func backButtonTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//        let homeViewController = storyboard.instantiateViewController(
-//            withIdentifier: "HomeViewController"
-//            ) as! HomeViewController
-//
-//        navigationController?.setViewControllers([homeViewController],
-//                                                 animated: true)
     }
     
     @IBAction func addEpisodesButtonTap(_ sender: Any) {
@@ -140,7 +133,23 @@ class ShowDetailsViewController: UIViewController {
 
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = episodes[indexPath.row]
         
+        presentEpisodeDetails(episode: episode)
+    }
+    
+    private func presentEpisodeDetails(episode: Episode){
+        let storyboard = UIStoryboard(name: "EpisodeDetails", bundle: nil)
+        let episodeDetailsViewController = storyboard.instantiateViewController(
+            withIdentifier: "EpisodeDetailsViewController"
+            ) as! EpisodeDetailsViewController
+        
+        episodeDetailsViewController.episode = episode
+        episodeDetailsViewController.token = self.token
+        
+        let navigationController = UINavigationController(rootViewController:
+            episodeDetailsViewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }
 

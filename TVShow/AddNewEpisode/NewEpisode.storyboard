@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,77 +16,83 @@
             <objects>
                 <viewController storyboardIdentifier="NewEpisodeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="byu-eM-4lf" customClass="NewEpisodeViewController" customModule="TVShow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KRG-bU-L7q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDu-qM-7z0" userLabel="PhotoView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="226.5"/>
+                                <rect key="frame" x="0.0" y="19.999999999999986" width="414" height="250.66666666666663"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-bv-LBg">
-                                        <rect key="frame" x="169.5" y="95" width="35" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="VWE-NJ-h86"/>
-                                            <constraint firstAttribute="width" constant="35" id="WPH-0f-8oe"/>
-                                        </constraints>
-                                        <state key="normal" image="ic-camera"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="250.66666666666666"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="50" maxX="30" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="110" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Upload photo" image="ic-camera">
+                                            <color key="titleColor" red="1" green="0.45882352939999999" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadPhotoButtonTap:" destination="byu-eM-4lf" eventType="touchUpInside" id="oNb-p0-fge"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="centerX" secondItem="JDu-qM-7z0" secondAttribute="centerX" id="8OS-lo-OmR"/>
-                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="centerY" secondItem="JDu-qM-7z0" secondAttribute="centerY" id="YKS-jd-KTG"/>
+                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="top" secondItem="JDu-qM-7z0" secondAttribute="top" id="6eJ-Zz-z3b"/>
+                                    <constraint firstAttribute="bottom" secondItem="NfR-bv-LBg" secondAttribute="bottom" id="Fw4-dj-fja"/>
+                                    <constraint firstAttribute="trailing" secondItem="NfR-bv-LBg" secondAttribute="trailing" id="sWm-7S-2Xd"/>
+                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="leading" secondItem="JDu-qM-7z0" secondAttribute="leading" id="siW-7h-HOr"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-wB-kFc" userLabel="PropertyView">
-                                <rect key="frame" x="0.0" y="246.5" width="375" height="420.5"/>
+                                <rect key="frame" x="0.0" y="270.66666666666674" width="414" height="465.33333333333326"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQd-Rg-z1U">
-                                        <rect key="frame" x="10" y="0.0" width="355" height="64.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="394" height="71.666666666666671"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fb8-5r-Fx4">
-                                        <rect key="frame" x="5" y="64.5" width="365" height="1"/>
+                                        <rect key="frame" x="5" y="71.666666666666629" width="404" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Q4I-Ub-JBF"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Season n." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wh9-Ze-c5z">
-                                        <rect key="frame" x="10" y="67.5" width="355" height="65"/>
+                                        <rect key="frame" x="10" y="74.666666666666629" width="394" height="71.333333333333314"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLH-Ar-PIS">
-                                        <rect key="frame" x="5" y="132.5" width="365" height="1"/>
+                                        <rect key="frame" x="5" y="146" width="404" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="om6-d1-CeD"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode n." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atg-w8-sL9">
-                                        <rect key="frame" x="10" y="135.5" width="355" height="64.5"/>
+                                        <rect key="frame" x="10" y="149" width="394" height="71.666666666666686"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCr-OK-EDD">
-                                        <rect key="frame" x="5" y="200" width="365" height="1"/>
+                                        <rect key="frame" x="5" y="220.66666666666663" width="404" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="1ix-n3-rAC"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ha-WJ-ksb">
-                                        <rect key="frame" x="10" y="203" width="355" height="65"/>
+                                        <rect key="frame" x="10" y="223.6666666666666" width="394" height="71.666666666666657"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9t-Th-wPz">
-                                        <rect key="frame" x="5" y="268" width="365" height="1"/>
+                                        <rect key="frame" x="5" y="295.33333333333331" width="404" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Zlu-Yy-9G8"/>
@@ -148,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3DC-ja-jZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="95"/>
+            <point key="canvasLocation" x="165.59999999999999" y="94.902548725637189"/>
         </scene>
     </scenes>
     <resources>
