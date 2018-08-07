@@ -56,10 +56,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         
         if let email = UserDefaults.standard.value(forKey: "email") as? String,
             let password = UserDefaults.standard.value(forKey: "password") as? String {
