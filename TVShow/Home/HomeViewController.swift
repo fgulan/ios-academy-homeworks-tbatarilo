@@ -13,7 +13,6 @@ import CodableAlamofire
 
 class HomeViewController: UIViewController {
     
-    
     @IBOutlet weak var _tableView: UITableView! {
         didSet {
             _tableView.delegate = self
@@ -36,6 +35,8 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
@@ -45,7 +46,7 @@ class HomeViewController: UIViewController {
                 style: .plain,
                 target: self,
                 action:
-            #selector(_logoutActionHandler))
+            #selector(logoutActionHandler))
         navigationItem.leftBarButtonItem = logoutItem
     }
     
@@ -74,7 +75,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc private func _logoutActionHandler() {
+    @objc private func logoutActionHandler() {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(
             withIdentifier: "LoginViewController"

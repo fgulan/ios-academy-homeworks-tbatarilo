@@ -182,7 +182,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="dR9-OG-klM" id="OJ7-2S-L4q"/>
-                        <outlet property="numberOfEpisodes" destination="bLY-2w-pNt" id="0JW-9i-z28"/>
+                        <outlet property="numberOfEpisodesLabel" destination="bLY-2w-pNt" id="xnP-ow-IA8"/>
                         <outlet property="showImageView" destination="w4D-xy-t1c" id="lVS-JS-aAs"/>
                         <outlet property="tableView" destination="dcG-k7-JBA" id="6A8-4R-mBp"/>
                         <outlet property="titleLabel" destination="xTr-jD-THX" id="dfM-Wb-Rzz"/>

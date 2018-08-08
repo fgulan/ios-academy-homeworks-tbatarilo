@@ -25,7 +25,7 @@ class CommentsViewController: UIViewController {
     
     @IBOutlet weak var addCommentField: UITextField!
     @IBOutlet weak var tableView: UITableView!{
-        didSet{
+        didSet {
             tableView.delegate = self
             tableView.dataSource = self
         }
@@ -35,31 +35,38 @@ class CommentsViewController: UIViewController {
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasHidden), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
-        
+        addObservers()
         postCommentView.layer.borderColor = UIColor.lightGray.cgColor
         
         getComments()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        navigationItem.title = "Comments"
-        
-        var image = UIImage(named: "ic-navigate-back")
-        image = image?.withRenderingMode(.alwaysOriginal)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: self, action: #selector(didSelectBackButton))
-        
-        UINavigationBar.appearance().barTintColor = UIColor.white
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        setColor()
+        setTitle()
+        setBackButton()
         
     }
     
     @objc func didSelectBackButton() {
         self.dismiss(animated: false)
+    }
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasHidden), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+    }
+    
+    private func setTitle() {
+        navigationItem.title = "Comments"
+    }
+    
+    private func setColor() {
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+    }
+    
+    private func setBackButton() {
+        var image = UIImage(named: "ic-navigate-back")
+        image = image?.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style:.plain, target: self, action: #selector(didSelectBackButton))
     }
     
     private func getComments(){
@@ -82,17 +89,32 @@ class CommentsViewController: UIViewController {
                 case .success(let comments):
                     self?.comments = comments
                     self?.tableView.reloadData()
+                    
+                    if comments.count > 0 {
+                        self?.setTableViewBackgroundClear()
+                    } else {
+                        self?.setTableViewBackground()
+                    }
                 case .failure:
-                    print("Fail comm")
+                    print("Error comments.")
                 }
         }
         
     }
     
     private func setTableViewBackground(){
-        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        let rectView = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         
-        let messageLabel = UILabel(frame: rect)
+        let rectImage = CGRect(origin: CGPoint(x:tableView.bounds.size.width/4 ,y :tableView.bounds.size.height/6), size: CGSize(width: tableView.bounds.size.width/2, height: tableView.bounds.size.height/3))
+        
+        let rectLabel = CGRect(origin: CGPoint(x: 10,y :tableView.bounds.size.height/2), size: CGSize(width: tableView.bounds.size.width - 20, height: tableView.bounds.size.height/2))
+        
+        let view = UIView(frame: rectView)
+        
+        let imageView = UIImageView(frame: rectImage)
+        imageView.image = #imageLiteral(resourceName: "img-placehoder-comments")
+        
+        let messageLabel = UILabel(frame: rectLabel)
         messageLabel.text = "Sorry, we don't have comments yet. Be first who will write a review."
         messageLabel.numberOfLines = 0
         
@@ -102,8 +124,16 @@ class CommentsViewController: UIViewController {
         messageLabel.font = UIFont(name: "TrebuchetMS", size: 18)
         messageLabel.sizeToFit()
         
-        tableView.backgroundView = messageLabel;
+        view.addSubview(imageView)
+        view.addSubview(messageLabel)
+        
+        tableView.backgroundView = view;
         tableView.separatorStyle = .none;
+    }
+    
+    private func setTableViewBackgroundClear() {
+        tableView.backgroundView = nil
+        tableView.backgroundColor = UIColor.white
     }
     
     @IBAction func postComment(_ sender: Any) {
@@ -111,6 +141,9 @@ class CommentsViewController: UIViewController {
             shake(textField: addCommentField)
         }else{
             uploadComment(text: addCommentField.text!)
+            if comments.count > 0 {
+                setTableViewBackgroundClear()
+            }
         }
     }
     
@@ -178,15 +211,13 @@ class CommentsViewController: UIViewController {
 
 extension CommentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 extension CommentsViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -212,7 +243,7 @@ extension CommentsViewController: UITableViewDataSource {
         case 0: return #imageLiteral(resourceName: "img-placeholder-user1")
         case 1: return #imageLiteral(resourceName: "img-placeholder-user2")
         case 2: return #imageLiteral(resourceName: "img-placeholder-user3")
-        default: return #imageLiteral(resourceName: "img-placeholder-user2")
+        default: return #imageLiteral(resourceName: "img-placeholder-user1")
         }
     }}
 

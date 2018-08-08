@@ -14,7 +14,7 @@ class ShowDetailsViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var numberOfEpisodes: UILabel!
+    @IBOutlet weak var numberOfEpisodesLabel: UILabel!
     @IBOutlet weak var showImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -41,7 +41,7 @@ class ShowDetailsViewController: UIViewController {
         newEpisodeViewController.token = token
         newEpisodeViewController.showId = showId
         
-        newEpisodeViewController.delegate = self
+        newEpisodeViewController.addEpisodeDelegate = self
         
         let navigationController = UINavigationController.init(rootViewController:
             newEpisodeViewController)
@@ -68,7 +68,7 @@ class ShowDetailsViewController: UIViewController {
     }
     
     private func setNumberOfEpisodes() {
-        numberOfEpisodes.text = "Episodes " + String(episodes.count)
+        numberOfEpisodesLabel.text = "Episodes " + String(episodes.count)
     }
     
     private func getShowInfo(){
@@ -80,9 +80,8 @@ class ShowDetailsViewController: UIViewController {
         Alamofire
             .request("https://api.infinum.academy/api/shows/" + showId!,
                      method: .get,
-                     //                     parameters: parameter,
-                encoding: JSONEncoding.default,
-                headers: headers)
+                     encoding: JSONEncoding.default,
+                     headers: headers)
             .validate()
             .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:DataResponse<ShowDetails>) in
                 
@@ -108,9 +107,8 @@ class ShowDetailsViewController: UIViewController {
         Alamofire
             .request("https://api.infinum.academy/api/shows/" + showId! + "/episodes",
                      method: .get,
-                    parameters: nil,
-                encoding: JSONEncoding.default,
-                headers: headers
+                     encoding: JSONEncoding.default,
+                     headers: headers
             )
             .validate()
             .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) {[weak self] (response:DataResponse<[Episode]>) in

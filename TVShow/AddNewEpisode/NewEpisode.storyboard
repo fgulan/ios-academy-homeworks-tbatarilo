@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="19.999999999999986" width="414" height="250.66666666666663"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NfR-bv-LBg">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="250.66666666666666"/>
+                                        <rect key="frame" x="20" y="20" width="374" height="210.66666666666666"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="50" maxX="30" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="110" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -37,14 +37,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="top" secondItem="JDu-qM-7z0" secondAttribute="top" id="6eJ-Zz-z3b"/>
-                                    <constraint firstAttribute="bottom" secondItem="NfR-bv-LBg" secondAttribute="bottom" id="Fw4-dj-fja"/>
-                                    <constraint firstAttribute="trailing" secondItem="NfR-bv-LBg" secondAttribute="trailing" id="sWm-7S-2Xd"/>
-                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="leading" secondItem="JDu-qM-7z0" secondAttribute="leading" id="siW-7h-HOr"/>
+                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="top" secondItem="JDu-qM-7z0" secondAttribute="top" constant="20" id="6eJ-Zz-z3b"/>
+                                    <constraint firstAttribute="bottom" secondItem="NfR-bv-LBg" secondAttribute="bottom" constant="20" id="Fw4-dj-fja"/>
+                                    <constraint firstAttribute="trailing" secondItem="NfR-bv-LBg" secondAttribute="trailing" constant="20" id="sWm-7S-2Xd"/>
+                                    <constraint firstItem="NfR-bv-LBg" firstAttribute="leading" secondItem="JDu-qM-7z0" secondAttribute="leading" constant="20" id="siW-7h-HOr"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-wB-kFc" userLabel="PropertyView">
-                                <rect key="frame" x="0.0" y="270.66666666666674" width="414" height="465.33333333333326"/>
+                                <rect key="frame" x="0.0" y="320.66666666666674" width="414" height="415.33333333333326"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQd-Rg-z1U">
                                         <rect key="frame" x="10" y="0.0" width="394" height="71.666666666666671"/>
@@ -79,14 +79,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCr-OK-EDD">
-                                        <rect key="frame" x="5" y="220.66666666666663" width="404" height="1"/>
+                                        <rect key="frame" x="5" y="220.66666666666669" width="404" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="1ix-n3-rAC"/>
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ha-WJ-ksb">
-                                        <rect key="frame" x="10" y="223.6666666666666" width="394" height="71.666666666666657"/>
+                                        <rect key="frame" x="10" y="223.66666666666666" width="394" height="71.666666666666657"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -139,7 +139,7 @@
                             <constraint firstItem="iIF-wB-kFc" firstAttribute="leading" secondItem="Klr-4z-XoT" secondAttribute="leading" id="Xgj-3g-Bt7"/>
                             <constraint firstItem="atg-w8-sL9" firstAttribute="height" secondItem="Klr-4z-XoT" secondAttribute="height" multiplier="0.1" id="aKe-rh-8gj"/>
                             <constraint firstItem="2ha-WJ-ksb" firstAttribute="height" secondItem="Klr-4z-XoT" secondAttribute="height" multiplier="0.1" id="ett-aA-WEt"/>
-                            <constraint firstItem="iIF-wB-kFc" firstAttribute="top" secondItem="JDu-qM-7z0" secondAttribute="bottom" id="f4i-lZ-GFA"/>
+                            <constraint firstItem="iIF-wB-kFc" firstAttribute="top" secondItem="JDu-qM-7z0" secondAttribute="bottom" constant="50" id="f4i-lZ-GFA"/>
                             <constraint firstItem="CQd-Rg-z1U" firstAttribute="height" secondItem="Klr-4z-XoT" secondAttribute="height" multiplier="0.1" id="j1m-9z-uXM"/>
                             <constraint firstItem="Klr-4z-XoT" firstAttribute="bottom" secondItem="iIF-wB-kFc" secondAttribute="bottom" id="mne-8x-PKu"/>
                         </constraints>

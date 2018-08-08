@@ -23,26 +23,29 @@ class NewEpisodeViewController: UIViewController {
     @IBOutlet weak var episodeDescriptionTextField: UITextField!
     
     //MARK: -Private-
-    private var imagePicker = UIImagePickerController()
     private var mediaId = ""
     private var image: UIImage?
     
     var showId: String?
     var token: String?
-    weak var delegate: Reloading?
+    weak var addEpisodeDelegate: Reloading?
     
     @IBAction func uploadPhotoButtonTap(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum;
             imagePicker.allowsEditing = false
             
-            self.present(imagePicker, animated: true, completion: nil)
+            present(imagePicker, animated: true, completion: nil)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hideKeyboardWhenTappedAround()
         
         defineCancelButton()
         defineTitle()
@@ -156,7 +159,7 @@ class NewEpisodeViewController: UIViewController {
                 
                 switch response.result {
                 case .success(let episode):
-                    self?.delegate?.shouldReload(episode: episode)
+                    self?.addEpisodeDelegate?.shouldReload(episode: episode)
                     self?.dismiss(animated: true)
                 case .failure:
                     self?.showAlert(alertMessage: "Adding episode failed")

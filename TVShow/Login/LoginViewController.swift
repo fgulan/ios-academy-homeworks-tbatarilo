@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var rememberMeButton: UIButton!
     
     // MARK: -Private-
+    private var email: String?
+    private var password: String?
     private var saveCredentials = false;
     private var user: User?
     private var loginUser: LoginData?
@@ -35,28 +37,36 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func LogInPushHome(_ sender: Any) {
-        if areEmpty(email: emailField.text!, password: passwordField.text!) {
+        guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty else {
             SVProgressHUD.showError(withStatus: "Enter both parameters.")
             shakeIfEmpty(textField: emailField)
             shakeIfEmpty(textField: passwordField)
             return
         }
-        loginUser(email: emailField.text!, password: passwordField.text!, saveCredentials: saveCredentials)
+        
+        loginUser(email: email, password: password, saveCredentials: saveCredentials)
     }
     
     @IBAction func createPushHome(_ sender: Any) {
-        if areEmpty(email: emailField.text!, password: passwordField.text!) {
+        guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty else {
             SVProgressHUD.showError(withStatus: "Enter both parameters.")
             shakeIfEmpty(textField: emailField)
             shakeIfEmpty(textField: passwordField)
             return
         }
-        registerUser(email: emailField.text!, password: passwordField.text!)
+        
+        if password.count < 6 {
+            showAlert(alertMessage: "Password must have at least 6 characters.")
+            return
+        }
+        
+        registerUser(email: email, password: password)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
         
         if let email = UserDefaults.standard.value(forKey: "email") as? String,
             let password = UserDefaults.standard.value(forKey: "password") as? String {
